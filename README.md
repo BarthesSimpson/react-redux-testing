@@ -6,9 +6,13 @@
 
 ## Unit Tests
 
-* These are at the Redux level, and test either:
+* These are generally at the Redux level, and test either:
   * That a reducer behaves as expected given a certain action
   * That a saga/thunk causes the expected side effect(s) given a certain action
+
+* There are also unit tests for helper methods, e.g.
+  * Converting between different data structures
+  * Formatting data for presentation in a view
 
 * These tests are ideal for TDD
 
