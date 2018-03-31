@@ -1,5 +1,9 @@
 # React / Redux testing examples
 
+## Libraries
+
+The following excellent libraries are used:
+
 * [react-testing-library](https://github.com/kentcdodds/react-testing-library)
 * [redux-testkit](https://github.com/wix/redux-testkit)
 * [redux-saga-tester](https://github.com/wix/redux-saga-tester)
