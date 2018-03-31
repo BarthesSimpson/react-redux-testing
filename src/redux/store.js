@@ -1,8 +1,19 @@
-import { createStore } from 'redux'
-import reducer from './state'
+import { applyMiddleware, createStore, combineReducers } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { resourcesReducer, notificationsReducer } from './state'
+import createSagaMiddleware from 'redux-saga'
+import { resourceListener } from './state'
 
-export default () =>
-  createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const sagaMiddleware = createSagaMiddleware()
+
+export default () => {
+  const store = createStore(
+    combineReducers({
+      resources: resourcesReducer,
+      notifications: notificationsReducer
+    }),
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
   )
+  sagaMiddleware.run(resourceListener)
+  return store
+}

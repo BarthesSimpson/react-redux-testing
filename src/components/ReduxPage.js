@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import TextInput from './TextInput'
 import Button from './Button'
+import TextInput from './TextInput'
+import Toast from './Toast'
 import { toArray } from '../helpers/reshape'
 import { _addResource } from '../redux/state'
 
@@ -37,12 +38,13 @@ class ReduxPage extends React.Component {
           onClick={this.addResource}
           text="Add"
         />
+        <Toast />
       </div>
     )
   }
 }
 export default connect(
-  state => ({ resources: toArray(state) }),
+  ({ resources }) => ({ resources: toArray(resources) }),
   dispatch => ({
     addResource: name => dispatch(_addResource({ name }))
   })
